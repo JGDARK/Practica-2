@@ -20,7 +20,7 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Model.Personas", b =>
                 {
-                    b.Property<int>("personasid")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -28,7 +28,7 @@ namespace Persistence.Migrations
 
                     b.Property<string>("Nombre");
 
-                    b.HasKey("personasid");
+                    b.HasKey("Id");
 
                     b.ToTable("Personas");
                 });

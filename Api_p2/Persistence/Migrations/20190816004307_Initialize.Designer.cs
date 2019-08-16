@@ -9,7 +9,7 @@ using Persistence;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(PersonasDbcontext))]
-    [Migration("20190815235016_Initialize")]
+    [Migration("20190816004307_Initialize")]
     partial class Initialize
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -22,7 +22,7 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Model.Personas", b =>
                 {
-                    b.Property<int>("personasid")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -30,7 +30,7 @@ namespace Persistence.Migrations
 
                     b.Property<string>("Nombre");
 
-                    b.HasKey("personasid");
+                    b.HasKey("Id");
 
                     b.ToTable("Personas");
                 });

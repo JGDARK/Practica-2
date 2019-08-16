@@ -11,14 +11,14 @@ namespace Persistence.Migrations
                 name: "Personas",
                 columns: table => new
                 {
-                    personasid = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Nombre = table.Column<string>(nullable: true),
                     Apellido = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Personas", x => x.personasid);
+                    table.PrimaryKey("PK_Personas", x => x.Id);
                 });
         }
 

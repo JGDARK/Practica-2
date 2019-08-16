@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Persistence;
+using Service;
 
 namespace Api_p2
 {
@@ -31,6 +32,8 @@ namespace Api_p2
             var connection = Configuration.GetConnectionString("Dev");
             services.AddDbContext<PersonasDbcontext>
                 (options => options.UseSqlServer(connection));
+
+            services.AddTransient<IPersonaservice, Personaservice>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
