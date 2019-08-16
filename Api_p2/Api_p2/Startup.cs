@@ -13,6 +13,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Persistence;
 using Service;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace Api_p2
 {
@@ -36,6 +37,16 @@ namespace Api_p2
             services.AddTransient<IPersonaservice, Personaservice>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info
+                {
+                    Version = "v1",
+                    Title = "My API",
+                    Description = "Personas",
+                    Contact = new Contact() { Name = "Jorge Gabriel Acosta R.", Email = "20152700@itla.edu.do" }
+                });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -52,6 +63,12 @@ namespace Api_p2
 
             app.UseHttpsRedirection();
             app.UseMvc();
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+            });
         }
     }
 }
